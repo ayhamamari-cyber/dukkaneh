@@ -1,0 +1,29 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isOwner() {
+      return request.auth != null
+        && request.auth.token.email == 'ayhamamari@gmail.com'
+        && request.auth.token.email_verified == true;
+    }
+    // المنتجات والصور والإعدادات: الكل بيقرأ، بس صاحب الدكانة بيعدّل
+    match /catalog/{doc} { allow read: if true; allow write: if isOwner(); }
+    match /images/{doc}  { allow read: if true; allow write: if isOwner(); }
+    match /config/{doc}  { allow read: if true; allow write: if isOwner(); }
+
+    // الطلبات: الزبون بيعمل طلب وبيتابعه برقمه السري، وصاحب الدكانة بيشوف الكل ويحدّث الحالة
+    match /orders/{id} {
+      allow get: if true;
+      allow list, delete: if isOwner();
+      allow create: if id.size() >= 20 && id.size() <= 60
+        && request.resource.data.st == 0
+        && request.resource.data.keys().hasOnly(['no','ts','items','total','delUnknown','ship','addr','pay','eta','lines','sums','coupon','notes','name','phone','msg','id','st','mk'])
+        && request.resource.data.name is string && request.resource.data.name.size() < 80
+        && request.resource.data.phone is string && request.resource.data.phone.size() < 30
+        && request.resource.data.msg is string && request.resource.data.msg.size() < 8000;
+      allow update: if isOwner()
+        || (resource.data.st == 0 && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['cancelReq']));
+    }
+    match /{document=**} { allow read, write: if false; }
+  }
+}

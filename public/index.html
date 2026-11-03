@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>دكانتنا</title><meta name="description" content="اطلب أغراض البيت من دكانتنا بسهولة — توصيل للبيت أو استلام من الدكانة.">
+<meta name="theme-color" content="#ffffff"><link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="دكانتنا"><meta name="mobile-web-app-capable" content="yes">
+<meta property="og:title" content="دكانتنا"><meta property="og:description" content="أغراض بيتك لباب بيتك 🚚 — اطلب بدقيقة وادفع عند الاستلام"><meta property="og:image" content="icons/icon-512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Reem+Kufi:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=1793749073">
+</head><body>
+<div id="splash" class="splash"><div class="spl">🧺</div><b>دكانتنا</b><i></i></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+<div class="hero"><div class="topbar"><div class="brand"><div class="em" id="em">🧺</div><div class="hi"><small>أهلا وسهلا فيك 👋</small><h1 id="shop">دكانتنا</h1></div></div><div class="tbtns"><button type="button" class="favtop hb" aria-label="حسابي" onclick="window.pageAccount&amp;&amp;window.pageAccount()"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"></path></svg><i class="ncnt" style="display: none;"></i></button><button type="button" id="favTop" class="favtop" aria-label="المفضلة" onclick="window.showFavs&amp;&amp;window.showFavs()">♥<i id="favCnt" style="display: none;">0</i></button><button type="button" class="favtop hb" aria-label="السلة" onclick="document.getElementById('open').click()"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.5 11a2 2 0 0 1-2 1.7h-7A2 2 0 0 1 6.5 19z"></path><path d="M9 8V6a3 3 0 0 1 6 0v2"></path></svg><i id="cartCnt" style="display: none;">0</i></button></div></div>
+<div class="promos" id="promos"><div class="promo hero1"><div class="ptxt"><span class="kick">🥬 طازة كل يوم</span><b>أغراض بيتك<br>لباب بيتك 🚚</b><span>اطلب من دكانتنا بدقيقة، وادفع عند الاستلام</span><button type="button" class="cta" onclick="var c=document.getElementById('cats');if(c)c.scrollIntoView({behavior:'smooth',block:'center'})">ابدأ التسوق ←</button></div><div class="hcol" id="heroCol"></div></div><div class="promo p2" onclick="window.pageOffers&amp;&amp;window.pageOffers()"><div class="ptxt"><span class="kick">🔥 عروض</span><b>وفّر أكثر<br>مع عروضنا</b><span>خصومات وكوبونات وعروض كمية</span><em>شوف العروض ←</em></div><div class="pimg">🏷️</div></div><div class="promo p3"><div class="ptxt"><span class="kick">⚡ سهل وسريع</span><b>بتختار، بتبعت،<br>ومنجهزلك 🧺</b><span>بدون تسجيل — بتطلب كضيف</span><em>دفع نقدًا عند الاستلام</em></div><div class="pimg">📲</div></div></div><div class="pdots" id="promoDots"></div></div>
+<div class="tools"><div class="in"><div class="qwrap"><input id="q" type="search" placeholder="دور على غرض... مثلًا: حليب" aria-label="بحث" autocomplete="off" enterkeyhint="search"><button type="button" id="qx" class="qx" aria-label="امسح" onclick="var q=document.getElementById('q');q.value='';q.dispatchEvent(new Event('input'));q.focus()">✕</button></div><div class="sec">الأقسام</div><div id="cats"></div></div></div>
+<div class="dealsBanner" id="dealsBanner"></div>
+<div id="home"></div>
+<div id="fbar"><div class="ftools"><select id="sortSel" aria-label="ترتيب"><option value="">↕️ ترتيب: الافتراضي</option><option value="asc">السعر: من الأرخص</option><option value="desc">السعر: من الأغلى</option><option value="name">الاسم: أ ← ي</option></select><button type="button" class="fchip" data-ft="avail">✓ متوفر وإله سعر</button><button type="button" class="fchip" data-ft="sale">🔥 عروض بس</button></div></div>
+<main id="grid"></main>
+<div id="pg" class="catpage" style="display:none"><div class="cpbox"><div class="cphead"><span></span><button type="button" class="close" onclick="document.getElementById('pg').style.display='none'" aria-label="إغلاق">×</button></div><div id="pgBody"></div></div></div>
+<div id="catPage" class="catpage" style="display:none"><div class="cpbox"><div class="cphead"><b>📂 الأقسام</b><button type="button" class="close" onclick="document.getElementById('catPage').style.display='none'" aria-label="إغلاق">×</button></div><div id="catGrid" class="catgrid"></div></div></div>
+<div id="bar" class=""><button id="open"><span id="cnt"></span><span id="sum"></span></button></div>
+<nav id="bnav"><button type="button" class="on" onclick="window.navGo&amp;&amp;window.navGo('home',this)"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"></path></svg><span>الرئيسية</span></button><button type="button" onclick="window.navGo&amp;&amp;window.navGo('cats',this)"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"></rect><rect x="14" y="3" width="7" height="7" rx="2"></rect><rect x="3" y="14" width="7" height="7" rx="2"></rect><rect x="14" y="14" width="7" height="7" rx="2"></rect></svg><span>الأقسام</span></button><button type="button" onclick="window.navGo&amp;&amp;window.navGo('search',this)"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg><span>البحث</span></button><button type="button" onclick="window.navGo&amp;&amp;window.navGo('favs',this)"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg><span>المفضلة</span></button><button type="button" onclick="window.navGo&amp;&amp;window.navGo('cart',this)"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.5 11a2 2 0 0 1-2 1.7h-7A2 2 0 0 1 6.5 19z"></path><path d="M9 8V6a3 3 0 0 1 6 0v2"></path></svg><span>السلة</span><i id="bnCnt" style="display: none;">0</i></button></nav>
+<div id="sheet" role="dialog" aria-modal="true" class=""><div class="box">
+<button class="close" id="x" aria-label="إغلاق">×</button>
+<h2>طلبيتك</h2><div id="list"></div><div id="ship" class="ship"></div><div class="tot" id="tot"></div>
+<div class="guest">🙋 بتطلب كضيف — ما بدك حساب ولا كلمة سر.</div>
+<div class="f"><input id="name" placeholder="الاسم" autocomplete="name">
+<input id="phone" placeholder="رقم هاتفك" inputmode="tel" autocomplete="tel">
+<div id="addrPick"></div>
+<textarea id="addr" rows="2" placeholder="العنوان (المنطقة، الشارع، رقم البناية)"></textarea>
+<label class="mkt mk2"><input type="checkbox" id="mktChk"> 🎁 أوافق على استقبال رسائل عن العروض والخصومات والمنتجات الجديدة <small>(اختياري، وبتقدر توقفها بأي وقت)</small></label>
+<textarea id="notes" rows="2" placeholder="📝 ملاحظات للدكانة (اختياري) — مثلًا: بندورة مش كتير مستوية"></textarea></div>
+<div id="err"></div>
+<a class="send" id="send" href="#" target="_blank" rel="noopener">ابعت الطلب على واتساب</a>
+<button class="copy" id="copy">إذا ما انفتح الواتساب: انسخ الطلب</button>
+</div></div>
+<div id="amtSheet" role="dialog" aria-modal="true" class=""><div class="box">
+<button class="close" id="aclose" aria-label="إغلاق">×</button>
+<h2 id="atitle">اشتري بمبلغ محدد</h2>
+<div class="chips" id="chips"><button type="button" data-v="5">₪5</button><button type="button" data-v="10">₪10</button><button type="button" data-v="15">₪15</button><button type="button" data-v="20">₪20</button><button type="button" data-v="50">₪50</button></div>
+<div class="f"><input id="amtIn" type="number" inputmode="decimal" min="0" step="0.5" placeholder="المبلغ بالشيكل ₪"></div>
+<div id="aerr"></div>
+<button class="send" id="amtOk" style="background:var(--deep)">أضف للسلة</button>
+</div></div>
+<button class="gear" id="gear" title="إدارة الدكانة" aria-label="إدارة الدكانة" style="display:none">⚙️</button>
+<div id="adm" class="adm" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:20;align-items:flex-end"><div class="box">
+<button class="close" id="ax" aria-label="إغلاق">×</button><h2>إدارة الأغراض</h2><p class="u" style="margin:-4px 0 6px">عدّل الاسم والقسم والوحدة والسعر لأي غرض، احذفه، أو أضف غرض جديد.</p>
+<details class="ostbox cfgbox" id="cfgBox"><summary>⚙️ إعدادات الدكانة (توصيل، ساعات، كوبونات)</summary><div id="cfgForm" class="cfgf"></div></details>
+<details class="ostbox" id="ostBox" open><summary>📥 الطلبات <em id="ordNew"></em></summary><div class="ofil" id="ordFil"></div><div id="ordList" class="ordlist"><p class="u">عم نحمّل الطلبات…</p></div></details>
+<details class="ostbox" id="bcBox"><summary>📣 رسالة عروض للزبائن</summary><div class="ostf">
+<select id="bcT"><option value="today">🔥 عروض اليوم</option><option value="week">📅 عروض الأسبوع</option><option value="coupon">🎟️ كوبون</option><option value="free">🚚 توصيل مجاني</option><option value="new">🆕 منتجات جديدة</option><option value="custom">✍️ رسالة حرّة</option></select>
+<textarea id="bcTxt" rows="7"></textarea><div class="otpl"><button type="button" id="bcCopy">📋 انسخ</button><button type="button" id="bcWa">💬 افتح بواتساب</button></div>
+<p class="u">ابعتها بس للزبائن اللي وافقوا (مكتوب «رسائل العروض: موافق» برسالة طلبهم). أسهل طريقة: قائمة بث (Broadcast) بواتساب بيزنس فيها بس الموافقين، وشيل منها كل حدا بعتلك «إلغاء الاشتراك».</p></div></details>
+<div class="aquick">
+<button class="sv svg" id="aaddnew" type="button">+ أضف غرض جديد</button>
+<button class="sv svg" id="acamnew" type="button" style="display: block;">📷 أضف بالصورة</button>
+</div>
+<input type="file" id="camIn" accept="image/*" capture="environment">
+
+<div id="am"></div>
+
+<div class="admbar"><input id="admQ" type="search" placeholder="🔎 دور على منتج للتعديل…" autocomplete="off"><div id="admTabs" class="admtabs"></div></div>
+<div id="admList"></div>
+<button class="sv" id="asave">💾 احفظ كل التعديلات مرة وحدة</button></div></div>
+
+
+<script src="config.js?v=1793749073"></script>
+<script>window.APP_V="1793749073"</script>
+<script type="module" src="boot.js?v=1793749073"></script>
+</body></html>
