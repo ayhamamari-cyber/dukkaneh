@@ -1,4 +1,5 @@
 
+document.documentElement.setAttribute("data-theme","light"); // الموقع دايمًا فاتح (خلفية بيضا)
 // ===== عدّل هون =====
 const SHOP_NAME = "دكانتنا";
 const WHATSAPP = "972502486206"; // رقمك مع رمز الدولة بدون + أو صفر البداية
