@@ -51,7 +51,7 @@ function promoAuto(){const s=$("promos"),dots=$("promoDots");if(!s||!dots)return
  dots.innerHTML=slides.map((x,k)=>`<i class="${k?"":"on"}"></i>`).join("");let k=0,user=0;
  s.addEventListener("scroll",()=>{const w=s.clientWidth;const n=Math.round(Math.abs(s.scrollLeft)/Math.max(1,slides[0].offsetWidth+10));[...dots.children].forEach((d2,j)=>d2.classList.toggle("on",j===n));k=n},{passive:true});
  s.addEventListener("touchstart",()=>{user=Date.now()},{passive:true});
- setInterval(()=>{if(document.hidden||Date.now()-user<8000||slides.length<2)return;k=(k+1)%slides.length;slides[k].scrollIntoView({behavior:"smooth",block:"nearest",inline:"start"})},5000)}
+ setInterval(()=>{if(document.hidden||Date.now()-user<8000||slides.length<2)return;const r=s.getBoundingClientRect();if(r.top<0||r.bottom>innerHeight)return;k=(k+1)%slides.length;const t=slides[k],sr=s.getBoundingClientRect(),tr=t.getBoundingClientRect();s.scrollBy({left:(tr.right-sr.right),behavior:"smooth"})},5000)}
 function catImg(g){const p=PRODUCTS.find(q=>groupOf(q.c)===g&&q.img&&q.p>0)||PRODUCTS.find(q=>groupOf(q.c)===g&&q.img);return p?p.img:""}
 function drawCats(){const hasSale=PRODUCTS.some(p=>p.s);ce["المفضلة"]="❤️";const list=["الكل",...(hasSale?["عروض"]:[]),...(favs.size?["المفضلة"]:[]),...groupsPresent().map(g=>{ce["G:"+g.n]=g.i;return "G:"+g.n})];{const p2=document.querySelector(".promo.p2");if(p2)p2.style.display=hasSale?"":"none"}$("cats").innerHTML=list.map(c=>`<button class="${c===cur?"on":""}" data-c="${c}"><span class="ci">${c.startsWith("G:")&&catImg(c.slice(2))?`<img src="${catImg(c.slice(2))}" alt="">`:ce[c]}</span><span class="cl">${c.startsWith("G:")?c.slice(2):c}</span></button>`).join("");drawDeals()}
 function drawDeals(){
