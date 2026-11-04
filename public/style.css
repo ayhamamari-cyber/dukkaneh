@@ -785,3 +785,10 @@ body{background:var(--bg)}
 .otpl [data-osave]{background:#141311;color:#e3b956;border-color:#141311}
 .gear.ping{animation:gping 1s ease-in-out infinite}
 @keyframes gping{50%{box-shadow:0 0 0 10px rgba(229,57,53,.35)}}
+
+.impbox{background:linear-gradient(135deg,#fff8e6,#fdeec4);border:1.5px solid #e3b956;border-radius:16px;padding:12px;margin:0 0 10px}
+.imph{font:800 14.5px Cairo,Tahoma,sans-serif;color:#141311;margin-bottom:8px}
+.impl{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.impl img,.impl span{width:42px;height:42px;border-radius:10px;object-fit:cover;background:#fff;border:1px solid #ecd9a8;display:grid;place-items:center;font-size:22px}
+.impl em{font:800 12px Cairo,sans-serif;font-style:normal;align-self:center;color:#7a5a00}
+.impbox .sv{margin-top:0}

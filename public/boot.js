@@ -55,6 +55,11 @@ async function resolveImgs(items){
  if(!conf)conf=LSget("dk_cfg",null);
  if(!conf){try{conf=await (await fetch("settings.json",{cache:"no-cache"})).json()}catch(e){conf={}}}
  window.__CFG=conf||{};
+ // منتجات جديدة جهّزها Claude (public/import.json): قبل أول حفظ بتنضاف لحالها، وبعدها صاحب الدكانة بيضيفها بكبسة
+ let imp=[];try{imp=await (await fetch("import.json",{cache:"no-cache"})).json()}catch(e){imp=[]}
+ if(!Array.isArray(imp))imp=[];
+ if(src!=="db"){const have=new Set(items.map(p=>p.id));imp.forEach(p=>{if(p&&p.id&&!have.has(p.id))items.push(p)});imp=[]}
+ window.__IMPORT=imp;
  window.__DATA=await resolveImgs(items.map(p=>({...p})));window.__SRC=src;
  const s=document.createElement("script");s.src="app.js?v="+(window.APP_V||"1");s.onload=()=>{const sp=document.getElementById("splash");if(sp)sp.remove()};document.body.appendChild(s);
 })();

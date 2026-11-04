@@ -543,12 +543,17 @@ async function ownerLogin(){if(isOwner)return openAdm();try{await FB.signInGoogl
 window.ownerLogin=ownerLogin;
 $("em").onclick=()=>{taps++;clearTimeout(tt);tt=setTimeout(()=>taps=0,1500);if(taps>=5){taps=0;ownerLogin()}};
 $("gear")?.addEventListener?.("click",openAdm);
+function impPending(){const have=new Set(PRODUCTS.map(p=>p.id));return (window.__IMPORT||[]).filter(p=>p&&p.id&&!have.has(p.id))}
+function impBanner(){let el=$("impBox");const L=impPending();if(!L.length){if(el)el.remove();return}
+ if(!el){el=document.createElement("div");el.id="impBox";el.className="impbox";const box=document.querySelector("#adm .box");box.insertBefore(el,box.querySelector(".ostbox")||box.firstChild)}
+ el.innerHTML=`<div class="imph">📦 في <b>${L.length}</b> منتج جديد جهّزهن Claude</div><div class="impl">${L.slice(0,12).map(p=>p.img?`<img src="${p.img}" alt="">`:`<span>${p.e||"🛒"}</span>`).join("")}${L.length>12?`<em>+${L.length-12}</em>`:""}</div><button type="button" class="sv" id="impGo">➕ ضيفهم للموقع</button><small class="u">بينضافوا بدون سعر، وبتلاقيهم بتبويب «💰 بدون سعر».</small>`;
+ $("impGo").onclick=async()=>{const N=impPending();if(!N.length)return;$("impGo").disabled=true;const list=PRODUCTS.map(p=>({...p})).concat(N.map(p=>({...p})));const ok=await admPublish(list.map(sanP),`✓ انضافوا ${N.length} منتج جديد`,"");$("impGo").disabled=false;if(ok){window.__IMPORT=[];impBanner();admGrp="$0";renderAdmin()}}}
 function openAdm(){
  if(!isOwner)return;
  draft=PRODUCTS.map((p,k)=>({...p,_k:k}));const nDraft=applyDraft();admQ="";if($("admQ"))$("admQ").value="";
  const nNo=PRODUCTS.filter(p=>!(p.p>0)).length;
  if(!admGrp||(admGrp==="$0"&&!nNo)||(admGrp!=="$0"&&admGrp!=="*"&&!draft.some(p=>groupOf(p.c)===admGrp)))admGrp=nNo?"$0":((groupsPresent()[0]||{}).n||"*");
- renderAdmin();
+ renderAdmin();impBanner();
  $("am").style.color="#b26a00";$("am").textContent=nDraft?`✏️ رجّعنالك تعديلات ما انحفظت على ${nDraft} ${nDraft===1?"منتج":"منتجات"} — دوس «احفظ» عليهن.`:"";$("adm").style.display="flex";
 }
 let admGrp="",admQ="";
